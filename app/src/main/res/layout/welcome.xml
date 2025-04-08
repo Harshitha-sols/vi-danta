@@ -23,8 +23,8 @@
         app:layout_constraintWidth_percent="0.9">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="371dp"
+            android:layout_height="693dp"
             android:padding="20dp">
 
             <!-- Curved Logo Image -->
