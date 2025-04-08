@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FBFBFB"
+    tools:context=".OralSurgeryActivity">
+
+    <!-- CardView Container -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="370dp"
+        android:layout_height="680dp"
+        android:layout_margin="30dp"
+        android:elevation="50dp"
+        android:padding="30dp"
+        app:cardBackgroundColor="#DBECF2"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/titleOrthodontics"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/orthodontics"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="192dp"
+                android:fillViewport="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titleOrthodontics">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <GridLayout
+                        android:id="@+id/treatmentCategoriesGrid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:alignmentMode="alignMargins"
+                        android:columnCount="2"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:rowCount="4"
+                        android:useDefaultMargins="true">
+
+                        <!-- 1. Metal Braces-->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardMetalBraces"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="8dp"
+                            app:cardBackgroundColor="@android:color/white"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="8dp">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="10dp">
+
+                                <ImageView
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    android:contentDescription="@string/metal_braces"
+                                    android:scaleType="fitCenter"
+                                    android:src="@drawable/metalbraces" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="@string/metal_braces"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="16sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <!-- 2.Clear Aligners-->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardClearAligners"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="8dp"
+                            app:cardBackgroundColor="@android:color/white"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="8dp">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="10dp">
+
+                                <ImageView
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    android:contentDescription="@string/clear_aligners"
+                                    android:scaleType="fitCenter"
+                                    android:src="@drawable/clearaligners" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="@string/clear_aligners"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="16sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <!-- 3.Retainers-->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardRetainers"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="8dp"
+                            app:cardBackgroundColor="@android:color/white"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="8dp">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="10dp">
+
+                                <ImageView
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    android:contentDescription="@string/retainers"
+                                    android:scaleType="fitCenter"
+                                    android:src="@drawable/retainers" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="@string/retainers"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="16sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+
+                    </GridLayout>
+                </LinearLayout>
+            </ScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

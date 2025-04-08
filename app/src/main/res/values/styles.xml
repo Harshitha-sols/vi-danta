@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="RoundedImage">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:contentDescription">true</item>
+    </style>
+</resources>

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FBFBFB"
+    tools:context=".PatientEntryActivity">
+
+    <!-- CardView Container -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="370dp"
+        android:layout_height="680dp"
+        android:layout_margin="30dp"
+        android:elevation="50dp"
+        android:padding="30dp"
+        app:cardBackgroundColor="#DBECF2"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.9">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+
+            <!-- Title -->
+
+            <TextView
+                android:id="@+id/titleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/patient_details"
+                android:textColor="@android:color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Patient Name Label -->
+
+            <!-- Patient Name Input -->
+            <TextView
+                android:id="@+id/labelPatientName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:text="Patient Name:"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titleText" />
+
+            <EditText
+                android:id="@+id/etPatientName"
+                android:layout_width="290dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:background="@android:color/white"
+                android:elevation="15dp"
+                android:hint="Enter patient name"
+                android:padding="12dp"
+                android:textColor="@android:color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/labelPatientName" />
+
+            <!-- Age & Gender -->
+
+            <!-- Mobile Number -->
+
+            <!-- Address -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/age"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etPatientName" />
+
+            <!-- Next Button -->
+
+            <EditText
+                android:id="@+id/etAge"
+                android:layout_width="100dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="40dp"
+                android:autofillHints="birthDateYear"
+                android:background="@android:color/white"
+                android:elevation="15dp"
+                android:hint="@string/hint_age"
+                android:inputType="number"
+                android:padding="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etPatientName" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="72dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/gender"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/etAge"
+                app:layout_constraintTop_toBottomOf="@id/etPatientName" />
+
+            <EditText
+                android:id="@+id/etGender"
+                android:layout_width="120dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="40dp"
+                android:autofillHints="gender"
+                android:background="@android:color/white"
+                android:elevation="15dp"
+                android:hint="@string/hint_gender"
+                android:inputType="text"
+                android:padding="12dp"
+                app:layout_constraintStart_toEndOf="@id/etAge"
+                app:layout_constraintTop_toBottomOf="@id/etPatientName" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="28dp"
+                android:text="@string/mobile_number"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etAge" />
+
+            <EditText
+                android:id="@+id/etPhone"
+                android:layout_width="290dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="64dp"
+                android:autofillHints="phone"
+                android:background="@android:color/white"
+                android:elevation="15dp"
+                android:hint="@string/hint_mobile_number"
+                android:inputType="phone"
+                android:padding="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.266"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etAge" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/address"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etPhone" />
+
+            <EditText
+                android:id="@+id/etPostalAddress"
+                android:layout_width="290dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="44dp"
+                android:autofillHints="postalAddress"
+                android:background="@android:color/white"
+                android:elevation="15dp"
+                android:hint="@string/hint_address"
+                android:inputType="textPostalAddress"
+                android:padding="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.266"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etPhone" />
+
+            <Button
+                android:id="@+id/buttonNext"
+                android:layout_width="68dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="28dp"
+                android:backgroundTint="@android:color/white"
+                android:elevation="15dp"
+                android:padding="12dp"
+                android:text="@string/next"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.912"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etPostalAddress" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

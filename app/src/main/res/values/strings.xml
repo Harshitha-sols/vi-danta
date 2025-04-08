@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">VDanta</string>
+    <string name="action_settings">Settings</string>
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+
+    <!-- Welcome Screen -->
+    <string name="register_label">New here? Register now!</string>
+    <string name="login_label">Already have an account?</string>
+    <string name="signup">Sign Up</string>
+    <string name="signin">Sign In</string>
+    <string name="login_as_admin">Login as Admin</string>
+    <string name="logo_desc">App Logo</string>
+
+    <string name="user_already_exists">User already exists!</string>
+    <string name="sign_in_instead">Sign in instead</string>
+    <string name="sign_in">Sign In</string>
+
+    <!-- Login Screen -->
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="login_button">Login</string>
+    <string name="example_email">example@gmail.com</string>
+    <string name="password_hint">Enter your password</string>
+
+    <!-- Patient Details -->
+    <string name="patient_details">Patient Details</string>
+
+    <!-- General Dentistry -->
+    <string name="general_dentistry">General Dentistry</string>
+
+    <!-- Treatment Categories -->
+    <string name="checkups_cleaning">Checkups and Cleaning</string>
+    <string name="tooth_extraction">Tooth Extraction</string>
+    <string name="fillings_sealants">Fillings and Sealants</string>
+    <string name="fluoride_treatment">Fluoride Treatment</string>
+    <string name="scaling_polishing">Scaling and Polishing</string>
+
+    <!-- General Dentistry Section -->
+    <string name="cosmetic_dentistry">Cosmetic Dentistry</string>
+    <string name="teeth_whitening">Teeth Whitening</string>
+    <string name="veneers">Veneers</string>
+    <string name="dental_bonding">Dental Bonding</string>
+    <string name="smile_makeover">Smile Makeover</string>
+
+    <string name="restorative_dentistry">Restorative Dentistry</string>
+
+    <!-- Treatment Names -->
+    <string name="dental_implants">Dental Implants</string>
+    <string name="crowns_bridges">Crowns and Bridges</string>
+    <string name="dentures">Dentures</string>
+    <string name="root_canal">Root Canal Therapy</string>
+
+
+    <!-- Oral Surgery Treatments -->
+    <string name="oralsurgery">Oral Surgery</string>
+    <string name="wisdom_tooth">Wisdom Tooth Extraction</string>
+    <string name="jaw_surgery">Jaw Surgery</string>
+    <string name="bone_grafting">Bone Grafting</string>
+
+    <string name="periodontics">Periodontics</string>
+    <string name="gum_disease">Gum Disease Treatment</string>
+    <string name="root_planting">Scaling and Root Planing</string>
+    <string name="laser_gum">Laser Gum Therapy</string>
+
+    <!-- Orthodontics Screen -->
+    <string name="orthodontics">Orthodontics</string>
+    <string name="metal_braces">Metal Braces</string>
+    <string name="clear_aligners">Clear Aligners</string>
+    <string name="retainers">Retainers</string>
+
+    <!-- Pediatric Dentistry -->
+    <string name="pediatric_dentistry">Pediatric Dentistry</string>
+    <string name="kids_dental">Kids Dental Checkups</string>
+    <string name="fluoride_sealants">Fluoride &amp; Sealants</string>
+    <string name="space_maintainers">Space Maintainers</string>
+
+    <!-- Emergency Dental Care Screen -->
+    <string name="emergency_dental_care">Emergency Dental Care</string>
+    <string name="broken_tooth_repair">Broken Tooth Repair</string>
+    <string name="dental_abscess">Dental Abscess Treatment</string>
+    <string name="knocked_out">Knocked-out Tooth Care</string>
+
+    <!-- Labels -->
+    <string name="age">Age:</string>
+    <string name="gender">Gender:</string>
+    <string name="mobile_number">Mobile Number:</string>
+    <string name="address">Address:</string>
+    <string name="name_label">Name:</string>
+    <string name="email_label">Email Address:</string>
+    <string name="password_label">Password:</string>
+
+    <!-- Hints -->
+    <string name="hint_age">Enter age</string>
+    <string name="hint_gender">Enter gender</string>
+    <string name="hint_mobile_number">Enter mobile number</string>
+    <string name="hint_address">Enter address</string>
+    <string name="hint_name">Enter your full name</string>
+    <string name="hint_email">Enter your Gmail ID</string>
+    <string name="hint_password">Enter password</string>
+    <string name="hint_mobile">+91 XXXXXX XXXXX</string>
+
+    <!-- Buttons -->
+    <string name="next">→</string>
+    <string name="create_account">Create Account</string>
+    <string name="already_exists">Already Exists!</string>
+
+
+
+</resources>
+
+

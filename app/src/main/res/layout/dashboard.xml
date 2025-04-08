@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FBFBFB"
+    tools:context=".DashBoardActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Greeting Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hi, name of patient"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="How Are You Today?"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"/>
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    app:srcCompat="@drawable/bell_icon"
+                    android:contentDescription="Notification Icon"/>
+            </LinearLayout>
+
+            <!-- Banner Section -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="Dashboard Banner"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/banner" />
+            </androidx.cardview.widget.CardView>
+
+            <!-- Available Treatments Section -->
+            <TextView
+                android:id="@+id/textViewAvailableTreatments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Available Treatments"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"/>
+
+            <!-- Grid Layout for Treatment Categories (4 columns x 2 rows) -->
+            <!-- Grid Layout for Treatment Categories (2 columns x 4 rows) -->
+            <GridLayout
+                android:id="@+id/treatmentCategoriesGrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:rowCount="4"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:useDefaultMargins="true"
+                android:alignmentMode="alignMargins"
+                android:gravity="center">
+
+                <!-- 1. General Dentistry -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardGeneralDentistry"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="8dp"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardBackgroundColor="@android:color/white"
+                    android:layout_columnWeight="1"
+                    android:onClick="openGeneralDentistry">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/general_surgery"
+                            android:contentDescription="General Dentistry"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="General Dentistry"
+                            android:scaleType="fitCenter"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:gravity="center"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- 2. Cosmetic Dentistry -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardCosmeticDentistry"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_weight="1"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardBackgroundColor="@android:color/white"
+                    android:layout_columnWeight="1"
+                    android:onClick="openCosmeticDentistry">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/cosmetic_dentistry"
+                            android:contentDescription="Cosmetic Dentistry"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:scaleType="fitCenter"
+                            android:text="Cosmetic Dentistry"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:gravity="center"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <!-- 3. Orthodontics -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardOrthodontics"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_weight="1"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardBackgroundColor="@android:color/white"
+                    android:layout_columnWeight="1"
+                    android:onClick="openOrthodontics">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/orthodontics"
+                            android:contentDescription="Orthodontics"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Orthodontics"
+                            android:scaleType="fitCenter"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:gravity="center"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- 4. Oral Surgery -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardOralSurgery"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_weight="1"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardBackgroundColor="@android:color/white"
+                    android:layout_columnWeight="1"
+                    android:onClick="openOralSurgery">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/oral_surgery"
+                            android:contentDescription="Oral Surgery"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Oral Surgery"
+                            android:scaleType="fitCenter"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:gravity="center"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- 5. Pediatric Dentistry -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardPediatricDentistry"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="8dp"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardBackgroundColor="@android:color/white"
+                    android:layout_columnWeight="1"
+                    android:onClick="openPediatricDentistry">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/pediatric_surgery"
+                            android:contentDescription="Pediatric Dentistry"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pediatric Dentistry"
+                            android:scaleType="fitCenter"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:gravity="center"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- 6. Periodontics (Gum Care) -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardPeriodontics"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="8dp"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardBackgroundColor="@android:color/white"
+                    android:layout_columnWeight="1"
+                    android:onClick="openPeriodontics">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/periodontics"
+                            android:contentDescription="Periodontics"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Periodontics"
+                            android:scaleType="fitCenter"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:gravity="center"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- 7. Restorative Dentistry -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardRestorativeDentistry"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="8dp"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardBackgroundColor="@android:color/white"
+                    android:layout_columnWeight="1"
+                    android:onClick="openRestorativeDentistry">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/restorative_dentistry"
+                            android:contentDescription="Restorative Dentistry"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Restorative Dentistry"
+                            android:scaleType="fitCenter"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:gravity="center"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <!-- 8.Emergency Dental Care -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardEmergencyDentalCare"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="8dp"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardBackgroundColor="@android:color/white"
+                    android:layout_columnWeight="1"
+                    android:onClick="openEmergencyDentalCare">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/emergency_dental_care"
+                            android:contentDescription="Emergency Dental Care"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Emergency Dental Care"
+                            android:scaleType="fitCenter"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:gravity="center"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </GridLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
