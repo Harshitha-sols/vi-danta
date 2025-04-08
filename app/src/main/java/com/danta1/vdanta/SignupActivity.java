@@ -9,16 +9,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.regex.Pattern;
 
 public class SignupActivity extends AppCompatActivity {
@@ -27,16 +18,11 @@ public class SignupActivity extends AppCompatActivity {
     private Button buttonCreateAccount;
     private ProgressBar progressBar;
     private TextView textAlreadyExists, textSignIn;
-    private FirebaseAuth mAuth;
-    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup);
-
-        mAuth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
 
         etName = findViewById(R.id.etName);
         etPhone = findViewById(R.id.etPhone);
@@ -65,7 +51,6 @@ public class SignupActivity extends AppCompatActivity {
         String email = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
 
-        // Validate Inputs
         if (name.isEmpty()) {
             etName.setError("Name is required");
             return;
@@ -89,38 +74,10 @@ public class SignupActivity extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
         buttonCreateAccount.setEnabled(false);
 
-        // Create user in Firebase Authentication
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                // Hash password before storing in Firestore
-                String hashedPassword = hashPassword(password);
-
-                // Store user data in Firestore
-                String userId = mAuth.getCurrentUser().getUid();
-                DocumentReference userRef = db.collection("users").document(userId);
-
-                Map<String, Object> user = new HashMap<>();
-                user.put("name", name);
-                user.put("phone", phone);
-                user.put("email", email);
-                user.put("password", hashedPassword); // Store hashed password
-
-                userRef.set(user).addOnSuccessListener(aVoid -> {
-                    progressBar.setVisibility(View.GONE);
-                    Toast.makeText(SignupActivity.this, "Account Created Successfully!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(SignupActivity.this, SignInActivity.class));
-                }).addOnFailureListener(e -> {
-                    progressBar.setVisibility(View.GONE);
-                    Toast.makeText(SignupActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    buttonCreateAccount.setEnabled(true);
-                });
-
-            } else {
-                progressBar.setVisibility(View.GONE);
-                Toast.makeText(SignupActivity.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                buttonCreateAccount.setEnabled(true);
-            }
-        });
+        // Simulate success for UI testing
+        progressBar.setVisibility(View.GONE);
+        Toast.makeText(SignupActivity.this, "All inputs are valid! UI looks good.", Toast.LENGTH_SHORT).show();
+        buttonCreateAccount.setEnabled(true);
     }
 
     private boolean isValidIndianMobileNumber(String phone) {
@@ -134,21 +91,5 @@ public class SignupActivity extends AppCompatActivity {
     private boolean isValidPassword(String password) {
         Pattern passwordPattern = Pattern.compile("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[!@#$%^&*]).{8,}$");
         return passwordPattern.matcher(password).matches();
-    }
-
-    private String hashPassword(String password) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-            md.update(password.getBytes());
-            byte[] bytes = md.digest();
-            StringBuilder sb = new StringBuilder();
-            for (byte aByte : bytes) {
-                sb.append(String.format("%02x", aByte));
-            }
-            return sb.toString();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-            return null;
-        }
     }
 }

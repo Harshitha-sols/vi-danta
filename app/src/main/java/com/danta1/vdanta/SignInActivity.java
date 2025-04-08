@@ -7,23 +7,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class SignInActivity extends AppCompatActivity {
 
     private EditText etEmail, etPassword;
     private Button buttonLogin;
-    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signin);
-
-        mAuth = FirebaseAuth.getInstance();
 
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
@@ -56,24 +50,19 @@ public class SignInActivity extends AppCompatActivity {
             return;
         }
 
-        // Firebase Authentication
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        if (user != null) {
-                            Toast.makeText(SignInActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(SignInActivity.this, DashBoardActivity.class));
-                            finish(); // Close SignInActivity
-                        }
-                    } else {
-                        Toast.makeText(SignInActivity.this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+        // Hardcoded login check (for testing/demo purposes only)
+        if (email.equals("test@gmail.com") && password.equals("Test@123")) {
+            Toast.makeText(SignInActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(SignInActivity.this, DashBoardActivity.class));
+            finish(); // Close SignInActivity
+        } else {
+            Toast.makeText(SignInActivity.this, "Invalid credentials!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private boolean isValidGmail(String email) {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches() && email.endsWith("@gmail.com");
     }
 }
+
 

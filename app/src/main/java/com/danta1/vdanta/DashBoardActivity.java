@@ -5,12 +5,9 @@ import android.os.Bundle;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class DashBoardActivity extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
     private TextView userNameText;
 
     @Override
@@ -18,15 +15,8 @@ public class DashBoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dashboard);
 
-        // Firebase Auth
-        mAuth = FirebaseAuth.getInstance();
-        userNameText = findViewById(R.id.textView2);  // Ensure this ID is in your XML
-
-        // Get logged-in user's name
-        FirebaseUser user = mAuth.getCurrentUser();
-        if (user != null) {
-            userNameText.setText("Hi, " + user.getDisplayName());  // Display user name
-        }
+        userNameText = findViewById(R.id.textView2);  // Ensure this ID is present in dashboard.xml
+        userNameText.setText("Hi, User");  // Dummy welcome message
 
         // Finding CardViews
         CardView generalDentistry = findViewById(R.id.cardGeneralDentistry);
@@ -55,4 +45,5 @@ public class DashBoardActivity extends AppCompatActivity {
         startActivity(intent);
     }
 }
+
 
