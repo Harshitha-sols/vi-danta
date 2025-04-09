@@ -10,22 +10,22 @@
 
     <!-- CardView Container -->
     <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="360dp"
+        android:layout_height="729dp"
         android:layout_margin="30dp"
         android:elevation="10dp"
         android:padding="30dp"
         app:cardBackgroundColor="#DBECF2"
         app:cardCornerRadius="30dp"
-        app:layout_constraintWidth_percent="0.9"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.9">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="370dp"
-            android:layout_height="680dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:padding="20dp">
 
             <!-- Title -->
@@ -57,10 +57,10 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="68dp"
+                android:autofillHints="email"
                 android:background="@android:color/white"
                 android:hint="@string/example_email"
                 android:inputType="textEmailAddress"
-                android:autofillHints="email"
                 android:padding="12dp"
                 android:textColor="#212121"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -83,10 +83,10 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="56dp"
+                android:autofillHints="password"
                 android:background="@android:color/white"
                 android:hint="@string/password_hint"
                 android:inputType="textPassword"
-                android:autofillHints="password"
                 android:padding="12dp"
                 android:textColor="#212121"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -101,8 +101,8 @@
                 android:layout_marginTop="10dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:padding="12dp"
                 android:minHeight="48dp"
+                android:padding="12dp"
                 android:text="@string/forgot_password"
                 android:textColor="#007ACC"
                 android:textSize="14sp"
@@ -116,9 +116,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
+                android:padding="12dp"
                 android:text="@string/login_button"
                 android:textColor="@android:color/white"
-                android:padding="12dp"
                 app:backgroundTint="#7CB3C5"
                 app:cornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="parent"

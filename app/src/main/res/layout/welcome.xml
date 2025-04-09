@@ -9,8 +9,8 @@
 
     <!-- CardView Container -->
     <androidx.cardview.widget.CardView
-        android:layout_width="370dp"
-        android:layout_height="680dp"
+        android:layout_width="340dp"
+        android:layout_height="736dp"
         android:layout_margin="30dp"
         android:elevation="50dp"
         android:padding="50dp"
@@ -23,8 +23,8 @@
         app:layout_constraintWidth_percent="0.9">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="371dp"
-            android:layout_height="693dp"
+            android:layout_width="match_parent"
+            android:layout_height="680dp"
             android:padding="20dp">
 
             <!-- Curved Logo Image -->

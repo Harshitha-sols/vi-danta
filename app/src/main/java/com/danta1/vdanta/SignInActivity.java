@@ -13,6 +13,7 @@ public class SignInActivity extends AppCompatActivity {
 
     private EditText etEmail, etPassword;
     private Button buttonLogin;
+    private DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class SignInActivity extends AppCompatActivity {
         buttonLogin = findViewById(R.id.buttonLogin);
         TextView textCreateAccount = findViewById(R.id.textCreateAccount);
         TextView textForgotPassword = findViewById(R.id.textForgotPassword);
+        db = new DatabaseHelper(this);
 
         buttonLogin.setOnClickListener(v -> loginUser());
 
@@ -32,7 +34,7 @@ public class SignInActivity extends AppCompatActivity {
         );
 
         textForgotPassword.setOnClickListener(v ->
-                Toast.makeText(this, "Password reset feature coming soon!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Password reset coming soon!", Toast.LENGTH_SHORT).show()
         );
     }
 
@@ -40,8 +42,8 @@ public class SignInActivity extends AppCompatActivity {
         String email = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
 
-        if (!isValidGmail(email)) {
-            etEmail.setError("Enter a valid Gmail address (@gmail.com)");
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            etEmail.setError("Invalid email");
             return;
         }
 
@@ -50,18 +52,21 @@ public class SignInActivity extends AppCompatActivity {
             return;
         }
 
-        // Hardcoded login check (for testing/demo purposes only)
-        if (email.equals("test@gmail.com") && password.equals("Test@123")) {
-            Toast.makeText(SignInActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
+        if (db.validateUser(email, password)) {
+            Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(SignInActivity.this, DashBoardActivity.class));
-            finish(); // Close SignInActivity
+            finish();
         } else {
-            Toast.makeText(SignInActivity.this, "Invalid credentials!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Invalid credentials", Toast.LENGTH_SHORT).show();
         }
-    }
+        if (db.validateUser(email, password)) {
+            Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
 
-    private boolean isValidGmail(String email) {
-        return Patterns.EMAIL_ADDRESS.matcher(email).matches() && email.endsWith("@gmail.com");
+            Intent intent = new Intent(SignInActivity.this, DashBoardActivity.class);
+            intent.putExtra("email", email);  // ✅ Pass the user's email
+            startActivity(intent);
+            finish();
+        }
     }
 }
 

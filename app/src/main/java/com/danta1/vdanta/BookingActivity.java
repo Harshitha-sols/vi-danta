@@ -1,117 +1,51 @@
 package com.danta1.vdanta;
 
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
+import java.util.*;
 
 public class BookingActivity extends AppCompatActivity {
 
-    private TextView textTreatmentName;
-    private Button datePickerButton, timePickerButton, btnConfirmBooking;
-    private EditText editPhone, editNotes;
-
-    private Calendar selectedDateTime = Calendar.getInstance();
-    private String treatmentName = "";
+    private DatePicker datePicker;
+    private Spinner spinnerTimeSlots;
+    private Button btnConfirm;
+    private DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.booking);
 
-        // Initialize views
-        textTreatmentName = findViewById(R.id.textTreatmentName);
-        datePickerButton = findViewById(R.id.datePickerButton);
-        timePickerButton = findViewById(R.id.timePickerButton);
-        editPhone = findViewById(R.id.editPhone);
-        editNotes = findViewById(R.id.editNotes);
-        btnConfirmBooking = findViewById(R.id.btnConfirmBooking);
+        datePicker = findViewById(R.id.datePicker);
+        spinnerTimeSlots = findViewById(R.id.spinnerTimeSlots);
+        btnConfirm = findViewById(R.id.btnConfirm);
+        db = new DatabaseHelper(this);
 
-        // Get treatment name from intent
-        if (getIntent() != null && getIntent().hasExtra("TREATMENT_NAME")) {
-            treatmentName = getIntent().getStringExtra("TREATMENT_NAME");
-            textTreatmentName.setText(treatmentName);
-        }
+        // Restrict past dates
+        Calendar calendar = Calendar.getInstance();
+        datePicker.setMinDate(calendar.getTimeInMillis());
 
-        // Set initial date and time
-        updateDateButton();
-        updateTimeButton();
+        // Set time slots
+        String[] timeSlots = {"10:00 AM", "11:00 AM", "12:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, timeSlots);
+        spinnerTimeSlots.setAdapter(adapter);
 
-        // Date picker
-        datePickerButton.setOnClickListener(view -> {
-            int year = selectedDateTime.get(Calendar.YEAR);
-            int month = selectedDateTime.get(Calendar.MONTH);
-            int day = selectedDateTime.get(Calendar.DAY_OF_MONTH);
+        btnConfirm.setOnClickListener(v -> {
+            int day = datePicker.getDayOfMonth();
+            int month = datePicker.getMonth() + 1;
+            int year = datePicker.getYear();
+            String time = spinnerTimeSlots.getSelectedItem().toString();
+            String date = day + "/" + month + "/" + year;
 
-            DatePickerDialog datePicker = new DatePickerDialog(this,
-                    (view1, year1, month1, dayOfMonth) -> {
-                        selectedDateTime.set(year1, month1, dayOfMonth);
-                        updateDateButton();
-                    }, year, month, day);
-            datePicker.show();
-        });
-
-        // Time picker
-        timePickerButton.setOnClickListener(view -> {
-            int hour = selectedDateTime.get(Calendar.HOUR_OF_DAY);
-            int minute = selectedDateTime.get(Calendar.MINUTE);
-
-            TimePickerDialog timePicker = new TimePickerDialog(this,
-                    (view1, hourOfDay, minute1) -> {
-                        selectedDateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                        selectedDateTime.set(Calendar.MINUTE, minute1);
-                        updateTimeButton();
-                    }, hour, minute, false);
-            timePicker.show();
-        });
-
-        // Confirm booking
-        btnConfirmBooking.setOnClickListener(view -> {
-            String phone = editPhone.getText().toString().trim();
-            String notes = editNotes.getText().toString().trim();
-
-            if (phone.isEmpty()) {
-                Toast.makeText(this, "Please enter your phone number", Toast.LENGTH_SHORT).show();
-                return;
+            boolean inserted = db.insertAppointment(date, time);
+            if (inserted) {
+                Toast.makeText(this, "Appointment Confirmed for " + date + " at " + time, Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Failed to confirm appointment", Toast.LENGTH_SHORT).show();
             }
-
-            // You can now save to Firebase here if needed
-            String summary = "Appointment for " + treatmentName +
-                    " on " + getFormattedDate() +
-                    " at " + getFormattedTime() +
-                    "\nPhone: " + phone +
-                    (notes.isEmpty() ? "" : ("\nNotes: " + notes));
-
-            Toast.makeText(this, "Booked:\n" + summary, Toast.LENGTH_LONG).show();
-
-            // You can finish activity or navigate back
         });
-    }
-
-    private void updateDateButton() {
-        datePickerButton.setText(getFormattedDate());
-    }
-
-    private void updateTimeButton() {
-        timePickerButton.setText(getFormattedTime());
-    }
-
-    private String getFormattedDate() {
-        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault());
-        return sdf.format(selectedDateTime.getTime());
-    }
-
-    private String getFormattedTime() {
-        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a", Locale.getDefault());
-        return sdf.format(selectedDateTime.getTime());
     }
 }
+
 

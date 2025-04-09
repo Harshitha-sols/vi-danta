@@ -4,11 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.regex.Pattern;
 
@@ -18,12 +14,14 @@ public class SignupActivity extends AppCompatActivity {
     private Button buttonCreateAccount;
     private ProgressBar progressBar;
     private TextView textAlreadyExists, textSignIn;
+    private DatabaseHelper dbHelper;  // SQLite helper
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.signup);
+        setContentView(R.layout.signup); // Keep using your original signup.xml
 
+        // Initialize UI
         etName = findViewById(R.id.etName);
         etPhone = findViewById(R.id.etPhone);
         etEmail = findViewById(R.id.etEmail);
@@ -33,9 +31,12 @@ public class SignupActivity extends AppCompatActivity {
         textAlreadyExists = findViewById(R.id.textAlreadyExists);
         textSignIn = findViewById(R.id.textSignIn);
 
+        // Initial state
         textAlreadyExists.setVisibility(View.GONE);
         textSignIn.setVisibility(View.GONE);
         progressBar.setVisibility(View.GONE);
+
+        dbHelper = new DatabaseHelper(this);  // Initialize DB
 
         buttonCreateAccount.setOnClickListener(v -> registerUser());
 
@@ -51,6 +52,7 @@ public class SignupActivity extends AppCompatActivity {
         String email = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
 
+        // Validation
         if (name.isEmpty()) {
             etName.setError("Name is required");
             return;
@@ -71,13 +73,30 @@ public class SignupActivity extends AppCompatActivity {
             return;
         }
 
+        // Show progress
         progressBar.setVisibility(View.VISIBLE);
         buttonCreateAccount.setEnabled(false);
 
-        // Simulate success for UI testing
-        progressBar.setVisibility(View.GONE);
-        Toast.makeText(SignupActivity.this, "All inputs are valid! UI looks good.", Toast.LENGTH_SHORT).show();
-        buttonCreateAccount.setEnabled(true);
+        // Check if user already exists
+        if (dbHelper.checkUserExists(email)) {
+            progressBar.setVisibility(View.GONE);
+            buttonCreateAccount.setEnabled(true);
+            textAlreadyExists.setVisibility(View.VISIBLE);
+            textSignIn.setVisibility(View.VISIBLE);
+        } else {
+            // Insert into DB
+            boolean inserted = dbHelper.insertUser(name, phone, email, password);
+            progressBar.setVisibility(View.GONE);
+            buttonCreateAccount.setEnabled(true);
+            if (inserted) {
+                Toast.makeText(this, "Account created successfully!", Toast.LENGTH_SHORT).show();
+                // Optionally, redirect to SignInActivity
+                startActivity(new Intent(SignupActivity.this, SignInActivity.class));
+                finish();
+            } else {
+                Toast.makeText(this, "Signup failed. Try again.", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     private boolean isValidIndianMobileNumber(String phone) {
@@ -93,3 +112,4 @@ public class SignupActivity extends AppCompatActivity {
         return passwordPattern.matcher(password).matches();
     }
 }
+

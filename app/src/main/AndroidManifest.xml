@@ -45,6 +45,9 @@
         <activity android:name=".RestorativeDentistryActivity"/>
         <activity android:name=".EmergencyDentalCareActivity"/>
 
+        <activity android:name=".BookingActivity" />
+
+
 
     </application>
 

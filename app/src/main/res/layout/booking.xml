@@ -1,84 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="24dp"
-    android:background="@color/white">
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:padding="24dp"
+android:background="@color/white">
 
-    <!-- Doctor's Info (Non-editable) -->
-    <TextView
-        android:id="@+id/textDoctorName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Dr. Erick Su - General Dentist"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+<!-- Calendar View -->
+<DatePicker
+    android:id="@+id/datePicker"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:calendarViewShown="true"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Select Date Button -->
-    <Button
-        android:id="@+id/btnSelectDate"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Select Date"
-        android:textSize="16sp"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="@color/teal_700"
-        android:textColor="@android:color/white"
-        app:layout_constraintTop_toBottomOf="@id/textDoctorName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+<!-- Time Slot Selection -->
+<TextView
+    android:id="@+id/textTimeSlots"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Select a Time Slot:"
+    android:textSize="16sp"
+    android:textColor="@color/black"
+    app:layout_constraintTop_toBottomOf="@id/datePicker"
+    app:layout_constraintStart_toStartOf="parent"
+    android:layout_marginTop="16dp" />
 
-    <!-- Time Slots Label -->
-    <TextView
-        android:id="@+id/textTimeSlots"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Available Time Slots:"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@id/btnSelectDate"
-        app:layout_constraintStart_toStartOf="parent" />
+<Spinner
+    android:id="@+id/spinnerTimeSlots"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@id/textTimeSlots"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_marginTop="8dp" />
 
-    <!-- Horizontal Scrollable Time Slots -->
-    <HorizontalScrollView
-        android:id="@+id/timeSlotScroll"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fillViewport="true"
-        android:importantForAccessibility="no"
-        app:layout_constraintTop_toBottomOf="@id/textTimeSlots"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <LinearLayout
-            android:id="@+id/timeSlotContainer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="8dp" />
-    </HorizontalScrollView>
-
-
-    <!-- Confirm Button -->
-    <Button
-        android:id="@+id/btnConfirmBooking"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Confirm Appointment"
-        android:textSize="18sp"
-        android:layout_marginTop="32dp"
-        android:backgroundTint="@color/teal_700"
-        android:textColor="@android:color/white"
-        app:layout_constraintTop_toBottomOf="@id/timeSlotScroll"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
+<!-- Confirm Appointment Button -->
+<Button
+    android:id="@+id/btnConfirm"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:text="Confirm Appointment"
+    android:textSize="18sp"
+    android:layout_marginTop="32dp"
+    android:backgroundTint="@color/teal_700"
+    android:textColor="@android:color/white"
+    app:layout_constraintTop_toBottomOf="@id/spinnerTimeSlots"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+
